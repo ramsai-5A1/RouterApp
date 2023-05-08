@@ -1,11 +1,11 @@
 import './App.css';
 import { Route, Routes, NavLink } from 'react-router-dom';
-import { Home } from './components/Home';
 import { Support } from './components/Support';
 import { About } from './components/About';
 import { NotFound } from './components/NotFound';
 import { Labs } from './components/Labs';
-import { Link } from 'react-router-dom';
+import { MainHeader } from './components/MainHeader';
+import { Home } from './components/Home';
 
 function App() {
   return (
@@ -32,11 +32,14 @@ function App() {
 
 
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/support" element={<Support/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/labs" element={<Labs/>} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="/" element={<MainHeader/>} >
+            {/* Below line becomes my default route */}
+            <Route index element={<Home/>} />
+            <Route path="/support" element={<Support/>} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/labs" element={<Labs/>} />
+            <Route path="*" element={<NotFound/>} />
+          </Route>
         </Routes>
     </div>
   );
